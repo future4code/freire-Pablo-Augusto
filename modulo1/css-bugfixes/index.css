@@ -70,11 +70,13 @@ div>p:first-child {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
-    padding-top: 150px;
+    padding-top: 150px;    
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    margin-left: 40vw;
+    margin-right: 40vw;
 }
 
 #container-para-comprar {
