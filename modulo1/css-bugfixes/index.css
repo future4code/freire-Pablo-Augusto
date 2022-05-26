@@ -19,6 +19,9 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border: 0;
+    border-bottom: 2px solid black;
+    
 }
 
 button:active {
@@ -38,6 +41,7 @@ div>p:first-child {
     width: 250px;
     height: 40px;
     border-radius: 5px;
+    border: none;
     font-size: 20px;
     color: white;
 }
@@ -110,6 +114,7 @@ td button {
     width: 150px;
     height: 30px;
     border-radius: 5px;
+    border: none;
     color: black;
 }
 
