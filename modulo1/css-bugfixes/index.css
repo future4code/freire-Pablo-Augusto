@@ -61,7 +61,6 @@ div>p:first-child {
     width: 15px;
 }
 
-
 /** 
   *
   *  ESTILOS HOME 
@@ -100,7 +99,12 @@ div:last-child {
     text-align: center;
 }
 
+#div-tabela {
+    display: block;
+}
+
 table {
+    margin: auto;
     text-align: center;
     width: 60%;
 }
@@ -128,6 +132,9 @@ td button:hover {
     height: 100px;
 }
 
+#div-back-button {
+    margin-top: 200px;
+}
 
 #back-button {
     background-color: white;
