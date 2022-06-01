@@ -24,6 +24,11 @@ header {
     padding: 0 20px;
 }
 
+header a {
+    text-decoration: none;
+    color: black;
+}
+
 header input {
     height: 30px;
     padding: 0 10px;
@@ -43,6 +48,8 @@ header input:focus {
     grid-template-rows: 1fr 1fr;
     gap: 15px;
     padding: 20px;
+    max-width: 1085px;
+    margin: 0 auto;
 }
 
 .lista-videos a {
@@ -94,7 +101,84 @@ footer {
     background-color: rgb(42, 40, 37);
     color: white;
     align-items: center;
-    justify-content: center;
-    
-    
+    justify-content: center;  
+}
+
+/* Responsividade */
+
+@media screen and (min-device-width : 54px) and (max-device-width : 554px) {
+    .container {
+        grid-template-rows: 100px 1fr 90px;
+    }
+
+    header {
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    header input {
+        height: 30px;
+        padding: 0 10px;
+        border: 2px solid rgb(189, 104, 0);
+        margin-top: 0.8em;
+    }
+
+    .lista-videos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 20px 10px;
+        justify-content: center;
+    }
+
+    .video-card {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 1em;
+    }
+
+    .lista-videos a {
+        max-width: 98%;
+        max-height: 100%;
+    }
+
+    .video-card video {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .media-detalhado {
+        padding: 20px 18px;
+    }
+
+    .media-detalhado video {
+        max-width: 93vw;
+    }
+}
+
+@media screen and (min-device-width : 555px) and (max-device-width : 819px) {
+    .lista-videos {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        max-width: 555px;  
+    }
+
+    .media-detalhado video {
+        max-width: 85vw;
+    }
+}
+
+@media screen and (min-device-width : 820px) and (max-device-width : 1084px) {
+    .lista-videos {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        max-width: 820px;
+    }
+
+    .media-detalhado video {
+        max-width: 85vw;
+    }
 }
