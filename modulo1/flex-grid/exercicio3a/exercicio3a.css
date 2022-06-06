@@ -1,0 +1,95 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    color: white;
+}
+
+/* Parte Superior */
+
+#top-container {
+    display: flex;
+    height: 5vh;
+    width: 100vw;
+}
+
+.green-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+    height: 5vh;
+    width: 25vw;
+}
+
+.yellow-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+    height: 5vh;
+    width: 75vw; 
+}
+
+/* Parte Rosa */
+
+.pink-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: fuchsia;
+    height: 64vh;
+    width: 100vw; 
+}
+
+/* Parte do meio */
+
+#middle-container {
+    display: flex;
+    height: 26vh;
+    width: 100vw;
+}
+
+.blue-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+    height: 26vh;
+    width: 50vw;
+    
+}
+
+#blank {
+    height: 26vh;
+    width: 25vw;
+}
+
+.red-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    height: 13vh;
+    width: 25vw;
+}
+
+.lightgreen-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgreen;
+    height: 13vh;
+    width: 25vw;
+}
+
+.purple-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: purple;
+    height: 5vh;
+    width: 100vw;    
+}
