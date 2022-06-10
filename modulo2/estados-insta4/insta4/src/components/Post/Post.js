@@ -111,6 +111,8 @@ class Post extends React.Component {
     })
   }
 
+  //Transferência de dados entre componentes
+
   render() {
     let iconeCurtida
     let iconePostSalvo

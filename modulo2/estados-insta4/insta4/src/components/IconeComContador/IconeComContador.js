@@ -9,6 +9,7 @@ const IconImage = styled.img`
 	margin-right: 5px;
 	height: 32px;
 	width: 32px;
+	cursor: pointer;
 `
 
 export function IconeComContador(props) {
