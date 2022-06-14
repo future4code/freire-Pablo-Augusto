@@ -5,7 +5,7 @@ export default class PerguntaAberta extends React.Component {
         return (
             <div>
                 <p><label htmlFor={this.props.labelInput}>{this.props.pergunta}</label></p>
-                <p><input type={this.props.tipoInput} id={this.props.labelInput} /></p>
+                <p><input type={this.props.tipoInput} id={this.props.labelInput} value={this.props.valor} onChange={this.props.onChangeCampo} /></p>
             </div>
         )
     }
