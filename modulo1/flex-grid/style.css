@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.icone {
+    width: 20px;
+    height: 20px;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    width: 100vw;
+    min-width: 580px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: mediumvioletred;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 230px;
+    padding: 10px 15px;
+}
+
+.botao-login {
+    width: 80px;
+    text-align: center;
+    padding-right: 30px;
+}
+
+.botao-login > button {
+    padding: 3px 6px;
+}
+
+/* MENU LATERAL E MAIN */
+
+.container {
+    display: flex;
+    width: 100vh;
+    
+}
+
+
+/* Menu lateral */
+
+aside {
+    list-style: none;
+    background-color: #f2d0e0;
+    width: 20vw;
+    min-width: 300px;
+}
+
+aside li {
+    display: flex;
+    background-color: #f2d0e0;
+    text-transform: uppercase;
+    font-size: 18px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 300px;
+    min-width: 300px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+aside li:hover {
+    background-color: #c8a9b8;
+}
+
+.aba-navegacao {
+    display: flex;
+    align-items: center;
+    width: 160px;
+    padding: 10px 15px;
+}
+
+.aba-navegacao img {
+    margin-right: 25px;
+}
+
+
+
+/* Main */
+
+main {
+    min-width: 78vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.item-loja {
+    -webkit-box-shadow: 3px 3px 3px 0px rgba(169, 169, 169, 0.9);
+    -moz-box-shadow:    3px 3px 3px 0px rgba(169, 169, 169, 0.9);
+    box-shadow:         3px 3px 3px 0px rgba(169, 169, 169, 0.9);
+    text-align: center;
+    width: 250px;
+}
+
+.item-loja p {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.item-loja img {
+    width: 250px;
+    height: 250px;
+}
+
+
+/* FOOTER */
+
+footer p {
+    font-size: 18px;
+    font-weight: bold;
+    width: 100vw;
+    min-width: 580px;
+    background-color: mediumvioletred;
+    padding: 15px;
+    text-align: center;
+}
