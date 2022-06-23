@@ -25,7 +25,7 @@ export default class TelaCadastro extends React.Component {
 
     controlaInputNome = (event) => {
         this.setState({inputNome: event.target.value});
-      }
+    }
     
     controlaInputEmail = (event) => {
         this.setState({inputEmail: event.target.value});

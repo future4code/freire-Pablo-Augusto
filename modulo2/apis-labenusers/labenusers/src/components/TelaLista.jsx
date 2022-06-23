@@ -4,6 +4,15 @@ import Spinner from "./Spinner"
 import styled from "styled-components";
 
 // Componentes estilizados
+const DivBusca = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    & > input {
+        width: 100%;
+    }
+`
 const TelaUsuarios = styled.div`
     align-self: center;
 `
@@ -40,7 +49,31 @@ export default class TelaLista extends React.Component {
 
     state = {
         listaUsuarios: [],
-        listaCarregada: false
+        listaCarregada: false,
+        inputBuscaNome: '',
+        carregouBusca: false,
+        resultadoBusca: []
+    }
+
+    controlaInputBuscaNome = (event) => {
+        this.setState({inputBuscaNome: event.target.value});
+    }
+
+    procuraUsuarioPorNome = (nome) => {
+        axios.get(
+            `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=${nome}`,
+            {
+                headers: {
+                    Authorization: "pablo-augusto-freire"
+                }
+            }
+        ).then((response) => {
+            response ? this.setState({carregouBusca: true}) : this.setState({carregouBusca: false});
+            this.setState({resultadoBusca: response.data});
+          }).catch((error) => {
+            alert(error.message);
+            
+          });
     }
 
     listarUsuarios = () => {
@@ -83,21 +116,43 @@ export default class TelaLista extends React.Component {
     }
 
     render() {
-
-        const listaUsuariosExibida = this.state.listaUsuarios.map((usuario, indice) => {
-            let verificaIndice = indice % 2 === 0
-            return (
-            <UsuarioExibido cor={verificaIndice} key={usuario.id}>
-              <span onClick={() => this.props.verDetalhes(usuario.id)}>{usuario.name}</span>
-              <button onClick={() => {this.deletarUsuario(usuario.id)}}>Excluir</button>
+        let listaUsuariosExibida = '';
+        if (this.state.carregouBusca && this.state.resultadoBusca.length !== 0) {
+            listaUsuariosExibida = this.state.resultadoBusca.map((usuario, indice) => {
+                return <UsuarioExibido cor={true} key={indice}>
+                <span onClick={() => this.props.verDetalhes(usuario.id)}>{usuario.name}</span>
+                <button onClick={() => {this.deletarUsuario(usuario.id)}}>Excluir</button>
             </UsuarioExibido>
-            )
-        })
+            })
+            
+        } else {
+            listaUsuariosExibida = this.state.listaUsuarios.map((usuario, indice) => {
+                let verificaIndice = indice % 2 === 0
+                return (
+                <UsuarioExibido cor={verificaIndice} key={usuario.id}>
+                <span onClick={() => this.props.verDetalhes(usuario.id)}>{usuario.name}</span>
+                <button onClick={() => {this.deletarUsuario(usuario.id)}}>Excluir</button>
+                </UsuarioExibido>
+                )
+            })
+        }
+            
 
         return (
         <TelaUsuarios>
-          <h2>Lista de Usuários</h2>
-          {this.state.listaCarregada ? listaUsuariosExibida : <Spinner/> } 
+            <DivBusca>
+                <input 
+                type="text" 
+                placeholder="Busca por nome"
+                value={this.state.inputBuscaNome}
+                onChange={this.controlaInputBuscaNome}
+                />
+                <button onClick={() => this.procuraUsuarioPorNome(this.state.inputBuscaNome)}>Buscar</button>
+            </DivBusca>
+            <hr />
+            
+            <h2>Lista de Usuários</h2>
+            {this.state.listaCarregada ? listaUsuariosExibida : <Spinner/> } 
         </TelaUsuarios>
         );
     }
