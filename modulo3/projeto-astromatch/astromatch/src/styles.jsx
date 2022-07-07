@@ -20,10 +20,18 @@ export const TelaInicial = styled.div`
 
 export const Menu = styled.div`
     display: flex;
+    flex-direction: row;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     padding: 5px;
     border-bottom: 1px solid lightgray;
     margin-bottom: 10px;
+    position: relative;
+`;
+
+export const AstroMatch = styled.div`
+    position: absolute;
+    left: 40%;
+    
 `

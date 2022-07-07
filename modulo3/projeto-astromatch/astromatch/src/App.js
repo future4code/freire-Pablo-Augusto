@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import Matches from './components/Matches/Matches.jsx';
 import Perfis from './components/Perfis/Perfis.jsx';
-import { MainContainer, TelaInicial, Menu } from './styles.jsx';
+import { clearAll } from './services/Conexoes.jsx';
+import { MainContainer, TelaInicial, Menu, AstroMatch } from './styles.jsx';
 
 
 export default function App() {
@@ -10,6 +11,10 @@ export default function App() {
 
   const mudarTela = (telaAtual) => {
     setTela(telaAtual);
+  }
+
+  const limparEscolhas = () => {
+    clearAll();
   }
 
   let telaExibida = ''; 
@@ -29,9 +34,13 @@ export default function App() {
     <MainContainer>
       <TelaInicial>
         <Menu>
-          <button onClick={() => mudarTela('perfis')}>Voltar</button>
-          <span>AstroMatch</span>
-          <button onClick={() => mudarTela('matches')}>Matches</button>
+          <button onClick={limparEscolhas}>Reset</button>
+          <AstroMatch>AstroMatch</AstroMatch>
+          {tela === 'perfis' ?
+          <button onClick={() => mudarTela('matches')}>Matches</button> :
+          <button onClick={() => mudarTela('perfis')}>Perfis</button>
+          }
+          
         </Menu>
         {telaExibida}
       </TelaInicial>
