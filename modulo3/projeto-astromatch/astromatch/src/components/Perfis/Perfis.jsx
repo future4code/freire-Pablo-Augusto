@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { choosePerson, getProfileToChoose } from "../../services/Conexoes";
-import styled from "styled-components";
-
-const Botoes = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-`
+import { BoxImagem, BoxTexto, Botoes } from "./styles";
 
 export default function Perfis() {
 
@@ -35,12 +29,18 @@ export default function Perfis() {
     console.log(perfilAleatorio)
     return(
         <div>
-            <p>Lista de perfis</p>
-            <div>
+            <BoxImagem img={perfilAleatorio.photo}>
+                <img src={perfilAleatorio.photo} alt={perfilAleatorio.photo_alt} />
+                <BoxTexto>
+                    <p>{perfilAleatorio.name}, {perfilAleatorio.age}</p>
+                    <p>{perfilAleatorio.bio}</p>
+                </BoxTexto>
+            </BoxImagem>
+            {/* <div>
                 <p><img src={perfilAleatorio.photo} alt={perfilAleatorio.photo_alt} /></p>
                 <h2>{perfilAleatorio.name}, {perfilAleatorio.age}</h2>
                 <p>{perfilAleatorio.bio}</p>
-            </div>
+            </div> */}
             <Botoes>
                 <button onClick={() => escolher(perfilAleatorio.id, false)}>Não</button>
                 <button onClick={() => escolher(perfilAleatorio.id, true)}>Sim</button>

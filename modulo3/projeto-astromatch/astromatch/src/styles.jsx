@@ -10,7 +10,7 @@ export const MainContainer = styled.div`
 export const TelaInicial = styled.div`
     margin: auto;
     width: 400px;
-    height: 600px;
+    height: 650px;
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -26,7 +26,7 @@ export const Menu = styled.div`
     justify-content: space-between;
     padding: 5px;
     border-bottom: 1px solid lightgray;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     position: relative;
 `;
 
