@@ -1,36 +1,37 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { getMatches } from "../../services/Conexoes";
-
-const Div = styled.div`
-    & ul li {
-        
-        width: fit-content;
-        margin-left: 25px;
-    }
-`
+import { TelaMatches, Match, DivMatches} from './styles'
 
 export default function Matches() {
 
     const [matches, setMatches] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         getMatches().then((response) => {
             setMatches(response.matches)
+            setIsLoading(false)
             console.log(response.matches)
         })
     }, [])
 
+    const matchesExibidos = matches.map((match) => {
+        return (
+            <Match key={match.id}>
+                <div><img src={match.photo} /></div>
+                {match.name}
+            </Match>
+        );
+    })
+
     return(
-        <Div>
-            Lista de matches
-            <ul>
-                {
-                    matches.map((match) => {
-                        return <li key={match.id}>{match.name}, {match.age}</li>
-                    })
-                }
-            </ul>
-        </Div>
+        <TelaMatches>
+            <p>Meus matches</p>
+
+            <DivMatches>
+                {isLoading ? "Carregando..." : matchesExibidos}
+            </DivMatches> 
+            
+        </TelaMatches>
     );
 }
