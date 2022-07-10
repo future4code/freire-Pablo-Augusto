@@ -1,5 +1,11 @@
 import styled from "styled-components"
 
+export const TelaPerfis = styled.div`
+    min-height: 400px;
+    max-height: 400px;
+    width: 100%;
+`;
+
 export const BoxImagem = styled.div`
     position: relative;
     display: flex;
@@ -10,7 +16,7 @@ export const BoxImagem = styled.div`
     height: 460px;
     margin: 5px auto;
     border-radius: 10px;
-    box-shadow: 0px 0px 6px 1px rgb(0 0 0 / 69%);
+    box-shadow: 0px 0px 6px 1px rgb(0 0 0 / 70%);
 
     &::before {
         position: absolute;

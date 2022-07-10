@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMatches } from "../../services/Conexoes";
+import Loader from "../Loader/Loader";
 import { TelaMatches, Match, DivMatches} from './styles'
 
 export default function Matches() {
@@ -11,7 +12,6 @@ export default function Matches() {
         getMatches().then((response) => {
             setMatches(response.matches)
             setIsLoading(false)
-            console.log(response.matches)
         })
     }, [])
 
@@ -29,7 +29,7 @@ export default function Matches() {
             <p>Meus matches</p>
 
             <DivMatches>
-                {isLoading ? "Carregando..." : matchesExibidos}
+                {isLoading ? <Loader/> : matchesExibidos}
             </DivMatches> 
             
         </TelaMatches>
