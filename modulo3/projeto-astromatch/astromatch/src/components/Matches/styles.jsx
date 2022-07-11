@@ -62,3 +62,8 @@ export const Match = styled.div`
         box-shadow: 0px 0px 6px 1px rgb(0 0 0 / 50%);
     }
 `;
+
+export const SemMatches = styled.div`
+    margin: auto;
+    color: gray;
+`;

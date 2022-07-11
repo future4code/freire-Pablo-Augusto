@@ -3,6 +3,11 @@ import Matches from './components/Matches/Matches.jsx';
 import Perfis from './components/Perfis/Perfis.jsx';
 import { clearAll } from './services/Conexoes.jsx';
 import { MainContainer, TelaInicial, Menu, AstroMatch } from './styles.jsx';
+import { Button } from "@mui/material";
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import astromatchImagem from './img/astromatch.png';
 
 
 export default function App() {
@@ -34,11 +39,71 @@ export default function App() {
     <MainContainer>
       <TelaInicial>
         <Menu>
-          <button onClick={limparEscolhas}>Reset</button>
-          <AstroMatch>AstroMatch</AstroMatch>
+          <Button 
+          variant='text'
+          onClick={limparEscolhas}
+          sx={{
+            color: 'gray',
+            borderRadius: '50%',
+            size: 'small',
+            maxWidth: '35px',
+            maxHeight: '35px',
+            minWidth: '35px',
+            minHeight: '35px'
+          }}
+          >
+            <RefreshIcon
+            sx={{
+              color: 'gray',
+              borderRadius: '50%',
+              width: '30px',
+              height: '30px'
+            }}/>
+          </Button>
+          <AstroMatch>Astromatch</AstroMatch>
           {tela === 'perfis' ?
-          <button onClick={() => mudarTela('matches')}>Matches</button> :
-          <button onClick={() => mudarTela('perfis')}>Perfis</button>
+          <Button 
+          variant='text' 
+          onClick={() => mudarTela('matches')}
+          sx={{
+            color: 'gray',
+            borderRadius: '50%',
+            size: 'small',
+            maxWidth: '35px',
+            maxHeight: '35px',
+            minWidth: '35px',
+            minHeight: '35px'
+          }}
+          >
+            <SupervisorAccountIcon
+            sx={{
+              color: 'gray',
+              borderRadius: '50%',
+              width: '30px',
+              height: '30px'
+            }}/>
+          </Button> :
+          <Button 
+          variant='text' 
+          onClick={() => mudarTela('perfis')}
+          sx={{
+            color: 'gray',
+            borderRadius: '50%',
+            size: 'small',
+            maxWidth: '35px',
+            maxHeight: '35px',
+            minWidth: '35px',
+            minHeight: '35px'
+          }}
+          >
+            <PersonSearchIcon
+            sx={{
+              color: 'gray',
+              borderRadius: '50%',
+              width: '30px',
+              height: '30px'
+            }}/>
+          </Button>
           }
           
         </Menu>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getMatches } from "../../services/Conexoes";
 import Loader from "../Loader/Loader";
-import { TelaMatches, Match, DivMatches} from './styles'
+import { TelaMatches, Match, DivMatches, SemMatches} from './styles';
+import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 
 export default function Matches() {
 
@@ -15,14 +16,30 @@ export default function Matches() {
         })
     }, [])
 
-    const matchesExibidos = matches.map((match) => {
-        return (
-            <Match key={match.id}>
-                <div><img src={match.photo} /></div>
-                {match.name}
-            </Match>
-        );
-    })
+    let matchesExibidos = '';
+    if (matches.length !== 0) {
+        matchesExibidos = matches.map((match) => {
+            return (
+                <Match key={match.id}>
+                    <div><img src={match.photo} /></div>
+                    {match.name}
+                </Match>
+            );
+        });
+    } else {
+        matchesExibidos = <SemMatches>
+            <p>Não há matches</p>
+            <p>
+                <HeartBrokenIcon 
+                sx={{
+                    fontSize: '120px',
+                    color: 'gray'
+                }}
+                />    
+            </p>
+            </SemMatches>
+    }
+    
 
     return(
         <TelaMatches>

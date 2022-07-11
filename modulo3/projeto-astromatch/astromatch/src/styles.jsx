@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
+    font-family: 'Roboto', sans-serif;
     background-color: lightgray;
     min-width: 100vw;
     min-height: 100vh;
@@ -24,14 +25,16 @@ export const Menu = styled.div`
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
+    padding: 5px 15px;
     border-bottom: 1px solid lightgray;
     margin-bottom: 25px;
     position: relative;
 `;
 
 export const AstroMatch = styled.div`
-    position: absolute;
-    left: 40%;
-    
+    font-family: 'Lobster', cursive;
+    font-size: 24px;
+    & img {
+        width: 150px;
+    }
 `

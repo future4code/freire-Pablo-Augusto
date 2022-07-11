@@ -47,6 +47,8 @@ export const BoxImagem = styled.div`
 export const BoxTexto = styled.div`
     color: white;
     text-shadow: 0em 0em 0.2em black;
+    text-align: left;
+    width: 100%;
     padding: 0 20px;
     position: absolute;
     z-index: 4;
@@ -64,4 +66,5 @@ export const Botoes = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 20px 15px;
 `;
