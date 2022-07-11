@@ -37,6 +37,14 @@ export const DivMatches = styled.div`
     }
 `;
 
+export const Link = styled.a`
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;
+
 export const Match = styled.div`
     width: 95%;
     background-color: #eeeeee;
@@ -47,6 +55,7 @@ export const Match = styled.div`
     align-items: center;
     gap: 10px;
     transition: 0.25s;
+    cursor: pointer;
 
     & div {
         width: 50px;

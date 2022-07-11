@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { getMatches } from "../../services/Conexoes";
 import Loader from "../Loader/Loader";
-import { TelaMatches, Match, DivMatches, SemMatches} from './styles';
+import { TelaMatches, Link, Match, DivMatches, SemMatches} from './styles';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 
 export default function Matches() {
 
     const [matches, setMatches] = useState([]);
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getMatches().then((response) => {
@@ -20,10 +20,13 @@ export default function Matches() {
     if (matches.length !== 0) {
         matchesExibidos = matches.map((match) => {
             return (
-                <Match key={match.id}>
-                    <div><img src={match.photo} alt={`Foto de perfil de ${match.name}`}/></div>
-                    {match.name}
-                </Match>
+                    <Link href='https://web-whatslab.surge.sh/' target='_blank'>
+                    <Match key={match.id}>
+                        <div><img src={match.photo} alt={`Foto de perfil de ${match.name}`}/></div>
+                        {match.name}
+                    </Match>
+                    </Link>
+                
             );
         });
     } else {
