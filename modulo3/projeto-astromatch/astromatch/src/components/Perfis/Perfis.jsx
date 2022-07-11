@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { choosePerson, getProfileToChoose } from "../../services/Conexoes";
 import Loader from "../Loader/Loader";
 import { TelaPerfis, BoxImagem, BoxTexto, Botoes } from "./styles";
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Perfis() {
@@ -12,12 +14,11 @@ export default function Perfis() {
     const [perfilAleatorio, setPerfilAleatorio] = useState({});
     const [apertouBotao, setApertouBotao] = useState(false);
     const [isLoading, setIsLoading] = useState(true)
-    
+
     const escolher = (id, opcao) => {
         setIsLoading(true);
         choosePerson(id, opcao).then(() => {
-            setApertouBotao(!apertouBotao);
-            console.log("Escolheu", apertouBotao)
+            setApertouBotao(!apertouBotao);         
         });   
         
     }
@@ -25,17 +26,16 @@ export default function Perfis() {
     useEffect(() => {
         getProfileToChoose().then((response) => {
             setPerfilAleatorio(response.profile || {});
-            //setPerfilAleatorio(response.profile || vazio);
             setIsLoading(false);
-            console.log("UseEffect", apertouBotao)
         });
-    },[apertouBotao]);
-
-    console.log(perfilAleatorio)
-    
+    },[apertouBotao]);    
 
     return(
+        
         <TelaPerfis>
+            <>
+            <ToastContainer/>
+            </>
             {
             isLoading ?
                 <Loader/> :

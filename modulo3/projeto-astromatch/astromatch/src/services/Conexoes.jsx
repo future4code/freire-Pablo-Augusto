@@ -1,4 +1,19 @@
 import axios from 'axios';
+import { ToastContainer, toast, Zoom} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const matchNotification = () => {
+    toast('♡ Deu match ! ♡', {
+        className: 'deu-match',
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined
+    });
+}
 
 export async function getProfileToChoose() {
     try {
@@ -24,7 +39,7 @@ export async function choosePerson(id, opcao) {
             'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/pablo/choose-person',
             body
             );
-        return response.data.isMatch && alert('Deu match!')
+        return response.data.isMatch && matchNotification();
     }
     catch(error) {
         console.log(error.message);
