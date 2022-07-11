@@ -52,11 +52,11 @@ export default function Perfis() {
                         variant='text' 
                         onClick={() => escolher(perfilAleatorio.id, false)}
                         sx={{
-                            color: 'red',
+                            color: '#ff4646',
                             borderRadius: '50%',
                             width: '62px',
                             height: '62px',
-                            border: '3px solid red'
+                            border: '3px solid #ff4646'
                         }}
                         ><AddOutlinedIcon
                         sx={{
@@ -73,11 +73,11 @@ export default function Perfis() {
                         variant='text' 
                         onClick={() => escolher(perfilAleatorio.id, true)}
                         sx={{
-                            color: 'green',
+                            color: '#1c9d1c',
                             borderRadius: '50%',
                             width: '62px',
                             height: '62px',
-                            border: '3px solid green'
+                            border: '3px solid #1c9d1c'
                         }}
                         ><FavoriteBorderSharpIcon
                         sx={{

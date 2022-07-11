@@ -13,8 +13,8 @@ export const DivMatches = styled.div`
     align-items: center;
     gap: 10px;
     padding: 5px 0;
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 550px;
+    max-height: 550px;
     overflow-x: hidden;
     overflow-y: auto;
     

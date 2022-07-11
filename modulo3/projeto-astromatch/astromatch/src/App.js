@@ -7,7 +7,6 @@ import { Button } from "@mui/material";
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import astromatchImagem from './img/astromatch.png';
 
 
 export default function App() {
@@ -49,18 +48,21 @@ export default function App() {
             maxWidth: '35px',
             maxHeight: '35px',
             minWidth: '35px',
-            minHeight: '35px'
+            minHeight: '35px',
+            '&:hover': {
+              backgroundColor: '#e0e0e0',
+            }
           }}
           >
             <RefreshIcon
             sx={{
-              color: 'gray',
+              color: '#313131',
               borderRadius: '50%',
               width: '30px',
               height: '30px'
             }}/>
           </Button>
-          <AstroMatch>Astromatch</AstroMatch>
+          <AstroMatch><span>Astro</span><span>match</span></AstroMatch>
           {tela === 'perfis' ?
           <Button 
           variant='text' 
@@ -72,12 +74,15 @@ export default function App() {
             maxWidth: '35px',
             maxHeight: '35px',
             minWidth: '35px',
-            minHeight: '35px'
+            minHeight: '35px',
+            '&:hover': {
+              backgroundColor: '#e0e0e0',
+            }
           }}
           >
             <SupervisorAccountIcon
             sx={{
-              color: 'gray',
+              color: '#313131',
               borderRadius: '50%',
               width: '30px',
               height: '30px'
@@ -93,12 +98,15 @@ export default function App() {
             maxWidth: '35px',
             maxHeight: '35px',
             minWidth: '35px',
-            minHeight: '35px'
+            minHeight: '35px',
+            '&:hover': {
+              backgroundColor: '#e0e0e0',
+            }
           }}
           >
             <PersonSearchIcon
             sx={{
-              color: 'gray',
+              color: '#313131',
               borderRadius: '50%',
               width: '30px',
               height: '30px'

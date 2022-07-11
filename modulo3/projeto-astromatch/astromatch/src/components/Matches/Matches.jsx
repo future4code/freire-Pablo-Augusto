@@ -21,7 +21,7 @@ export default function Matches() {
         matchesExibidos = matches.map((match) => {
             return (
                 <Match key={match.id}>
-                    <div><img src={match.photo} /></div>
+                    <div><img src={match.photo} alt={`Foto de perfil de ${match.name}`}/></div>
                     {match.name}
                 </Match>
             );
@@ -43,7 +43,6 @@ export default function Matches() {
 
     return(
         <TelaMatches>
-            <p>Meus matches</p>
 
             <DivMatches>
                 {isLoading ? <Loader/> : matchesExibidos}

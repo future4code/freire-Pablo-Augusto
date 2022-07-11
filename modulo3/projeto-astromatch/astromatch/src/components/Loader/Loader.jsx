@@ -7,8 +7,8 @@ export default function Loader() {
         <PulsatingDiv>
             <svg width={0} height={0}>
                 <linearGradient id="linearColors" gradientTransform="rotate(45)">
-                    <stop offset='10%' stopColor="#ffb7b7" />
-                    <stop offset='90%' stopColor="#ff2020" />
+                    <stop offset='10%' stopColor="#ff8d1b" />
+                    <stop offset='90%' stopColor="#ff5159" />
                 </linearGradient>
             </svg>
             <FavoriteIcon

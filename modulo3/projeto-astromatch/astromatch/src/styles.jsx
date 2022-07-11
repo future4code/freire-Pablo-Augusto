@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
     font-family: 'Roboto', sans-serif;
-    background-color: lightgray;
+    background-image: linear-gradient(to top, #ff878d, #ffbc79);
     min-width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -13,10 +13,11 @@ export const TelaInicial = styled.div`
     width: 400px;
     height: 650px;
     background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 10px black;
 `;
 
 export const Menu = styled.div`
@@ -34,7 +35,10 @@ export const Menu = styled.div`
 export const AstroMatch = styled.div`
     font-family: 'Lobster', cursive;
     font-size: 24px;
-    & img {
-        width: 150px;
+    & span:first-child {
+        color: #ff8d1b;
+    }
+    & span:last-child {
+        color: #ff5159;
     }
 `
