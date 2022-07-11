@@ -68,3 +68,16 @@ export const Botoes = styled.div`
     justify-content: space-around;
     padding: 20px 15px;
 `;
+
+export const SemPretendentes = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 40% auto;
+    color: gray;
+    font-size: 20px;
+    width: fit-content;
+    gap: 40px;
+
+`;

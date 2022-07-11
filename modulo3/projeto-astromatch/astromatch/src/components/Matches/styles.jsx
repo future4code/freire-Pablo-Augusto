@@ -75,4 +75,7 @@ export const Match = styled.div`
 export const SemMatches = styled.div`
     margin: auto;
     color: gray;
+    & p:first-child {
+        font-size: 24px;
+    }
 `;
