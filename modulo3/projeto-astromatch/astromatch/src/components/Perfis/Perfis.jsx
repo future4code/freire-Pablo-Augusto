@@ -10,7 +10,7 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-export default function Perfis() {
+export default function Perfis(props) {
 
     const [perfilAleatorio, setPerfilAleatorio] = useState({});
     const [apertouBotao, setApertouBotao] = useState(false);
@@ -36,12 +36,9 @@ export default function Perfis() {
             setPerfilAleatorio(response.profile);
             setIsLoading(false);
         });
-    },[apertouBotao]);
-    
-    // começa
+    },[apertouBotao, props.resetou]);
 
     let perfilExibido = ''
-    console.log(perfilAleatorio)
     if (perfilAleatorio) {
         perfilExibido = <div>
             <BoxImagem img={perfilAleatorio.photo}>
@@ -121,8 +118,6 @@ export default function Perfis() {
         </SemPretendentes>
         
     }
-
-    //termina
 
     return(
         

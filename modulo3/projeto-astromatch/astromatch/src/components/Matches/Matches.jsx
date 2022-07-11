@@ -4,7 +4,7 @@ import Loader from "../Loader/Loader";
 import { TelaMatches, Link, Match, DivMatches, SemMatches} from './styles';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 
-export default function Matches() {
+export default function Matches(props) {
 
     const [matches, setMatches] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ export default function Matches() {
             setMatches(response.matches)
             setIsLoading(false)
         })
-    }, [])
+    }, [props.resetou])
 
     let matchesExibidos = '';
     if (matches.length !== 0) {
@@ -42,7 +42,6 @@ export default function Matches() {
             </p>
             </SemMatches>
     }
-    
 
     return(
         <TelaMatches>

@@ -12,22 +12,25 @@ import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 export default function App() {
 
   const [tela, setTela] = useState('perfis');
+  const [resetou, setResetou] = useState(false)
 
   const mudarTela = (telaAtual) => {
     setTela(telaAtual);
   }
 
   const limparEscolhas = () => {
-    clearAll();
+    clearAll().then(() => {
+      setResetou(!resetou);
+    });
   }
 
   let telaExibida = ''; 
   switch(tela) {
     case 'perfis':
-      telaExibida = <Perfis />;
+      telaExibida = <Perfis resetou={resetou}/>;
       break;
     case 'matches':
-      telaExibida = <Matches />;
+      telaExibida = <Matches resetou={resetou}/>;
       break;
     default:
       telaExibida = <Perfis />;
