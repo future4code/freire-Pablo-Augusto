@@ -1,23 +1,21 @@
 import { useNavigate } from "react-router-dom";
 
-export default function AdminHomePage() {
-    
+export default function AdminTripDetails() {
     const navigate = useNavigate();
 
     const goToHome = () => {
         navigate('/');
     }
 
-    const goToTripDetails = () => {
-        navigate('/admin-tripdetails');
+    const goBack = () => {
+        navigate(-1);
     }
 
     return (
       <div>
-        <p>Página Home do Admin</p>
+        <p>Admin Detalhes das Viagens</p>
         <p><button onClick={goToHome}>HomePública</button></p>
-        <p><button onClick={goToTripDetails}>Trip Details</button></p>
+        <p><button onClick={goBack}>Voltar</button></p>
       </div>
-      
     );
   }
