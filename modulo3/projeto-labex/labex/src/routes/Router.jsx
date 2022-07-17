@@ -12,7 +12,7 @@ export const Router = () => {
             <Routes>
                 <Route index element={ <Home/> } />
                 <Route path='admin-home' element={ <AdminHomePage/> } />
-                <Route path='admin-tripdetails' element={ <AdminTripDetails/> }/>
+                <Route path='admin-tripdetails/:idTrip' element={ <AdminTripDetails/> }/>
                 <Route path='*' element={<Error/> } />
             </Routes>
         </BrowserRouter>
