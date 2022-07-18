@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { URL_Base } from "../../constants/URL";
 import { useForm } from "../../hooks/useForm";
-import { Logar } from "../../conexoes/Login";
 import { DivFormLogin, FormLogin, CloseButton } from "./styles";
 import axios from 'axios';
 
@@ -31,7 +30,6 @@ export default function FormModalLogin(props) {
     .then((response) => {
         setRespostaLogin(response.data);
         localStorage.setItem('token', response.data.token)
-        console.log(response.data.token)
         setIsLoading(false);
         fechaForm();
     })
