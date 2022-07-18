@@ -1,16 +1,16 @@
 import { useState } from "react";
+import { URL_Base } from "../../constants/URL";
 import { useForm } from "../../hooks/useForm";
+import { Logar } from "../../conexoes/Login";
 import { DivFormLogin, FormLogin, CloseButton } from "./styles";
+import axios from 'axios';
 
 
 export default function FormModalLogin(props) {
 
   const [form, controlaCampo, limpaCampos] = useForm({email: '', password: ''});
-
-  // const controlaCampo = (event) => {
-  //   const {name, value} = event.target;
-  //   setForm({...form, [name]: value});
-  // }
+  const [respostaLogin, setRespostaLogin] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const fechaForm = () => {
     limpaCampos();
@@ -19,7 +19,28 @@ export default function FormModalLogin(props) {
 
   const fazerLogin = (event) => {
     event.preventDefault();
-    console.log(form)
+    
+    const body = {
+      email: form.email,
+      password: form.password
+    }
+
+    setIsLoading(true);
+    axios
+    .post(`${URL_Base}/login`, body)
+    .then((response) => {
+        setRespostaLogin(response.data);
+        localStorage.setItem('token', response.data.token)
+        console.log(response.data.token)
+        setIsLoading(false);
+        fechaForm();
+    })
+    .catch((error) => {
+        alert('Usuário ou senha inválidos!')
+        console.log(error.message)
+    })
+
+    
   }
   
   return (
@@ -46,7 +67,7 @@ export default function FormModalLogin(props) {
         pattern="^.{6,}"
         title="Sua senha deve ter no mínimo 6 caracteres"
         />
-        <button>Entrar</button>
+        <button>{ isLoading ? 'Caregando...' : 'Entrar' }</button>
         </form>
       </FormLogin>
     </DivFormLogin>
