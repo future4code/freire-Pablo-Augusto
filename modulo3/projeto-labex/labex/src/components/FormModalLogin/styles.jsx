@@ -1,11 +1,21 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`
 
 export const DivFormLogin = styled.div`
     display: ${(props) => (props.show ? 'flex' : 'none')};
     background-color: rgb(0,0,0,0.6);
     width: 100vw;
     height: 100vh;
-    position: absolute; 
+    position: absolute;
+    animation: ${fadeIn} 400ms;
 `;
 
 export const FormLogin = styled.div`
@@ -22,8 +32,14 @@ export const FormLogin = styled.div`
     & h1 {
         margin-bottom: 30px;
     }
-    & input {
+    & form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    & form input {
         margin-bottom: 15px;
+        padding: 5px 10px;
     }
 `;
 
