@@ -1,16 +1,18 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from '../pages/Login';
-import Registration from '../pages/Registration';
-import Feed from '../pages/Feed';
-import Post from '../pages/Post';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
+import FeedPage from '../pages/FeedPage/FeedPage';
+import PostPage from '../pages/PostPage/PostPage';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 export default function Router() {
     return <BrowserRouter>
         <Routes>
-            <Route index element={<Login/>} />
-            <Route path='/registration' element={<Registration/>} />
-            <Route path='/feed' element={<Feed/>} />
-            <Route path='/post' element={<Post/>} />
+            <Route path='/login' element={<LoginPage/>} />
+            <Route path='/registration' element={<RegistrationPage/>} />
+            <Route index path='/' element={<FeedPage/>} />
+            <Route path='/post/:id' element={<PostPage/>} />
+            <Route path='*' element={<ErrorPage/>} />
         </Routes>
     </BrowserRouter>
 }
