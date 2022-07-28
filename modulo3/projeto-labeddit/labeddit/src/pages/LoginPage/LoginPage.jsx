@@ -1,29 +1,29 @@
+import { TextField } from "@mui/material";
 import React from "react";
-import { ActionButton, Divider, PrimaryButton, SecondaryButton } from "../../components/styledComponents";
+import { Divider, PrimaryButton, SecondaryButton } from "../../components/styledComponents";
+import { CustomTextField } from "../../components/styledComponents2";
+import { BodyLogin, ContainerLogin } from "./styles";
 
 export default function Login() {
-    
-    return (
-      <div>
-        Página de Login
-        <PrimaryButton 
-        variant="outlined" 
-        >
-          Outro
-        </PrimaryButton>
-        <Divider/>
-        <SecondaryButton
-        variant="outlined">
-          Pablo
-        </SecondaryButton>
-        <Divider/>
-        <ActionButton variant="outlined">
-          Postar
-        </ActionButton>
-        <Divider/>
-        <ActionButton variant="outlined">
-          Responder
-        </ActionButton>
-      </div>
-    );
-  }
+
+  return (
+    <BodyLogin>
+      <ContainerLogin>
+        LOGO
+        <div>
+          <CustomTextField label='Nome' variant="outlined" type='text' />
+          <CustomTextField label='Senha' variant="outlined" type='password' />
+        </div>
+        <div>
+          <PrimaryButton variant="outlined">
+            Entrar
+          </PrimaryButton>
+          <Divider />
+          <SecondaryButton variant="outlined">
+            Crie uma conta!
+          </SecondaryButton>
+        </div>
+      </ContainerLogin>
+    </BodyLogin>
+  );
+}

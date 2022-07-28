@@ -1,8 +1,7 @@
-import { createTheme } from '@mui/material/styles';
-import { Button } from "@mui/material";
+// import { styled } from '@mui/material/styles';
+import { Button, TextField } from "@mui/material";
 import { primaryDefault, secondaryDefault, primaryHover, secondaryHover, neutralHover } from '../constants/colors';
 import styled from 'styled-components';
-
 
 export const PrimaryButton = styled(Button)`
   && {
@@ -14,6 +13,7 @@ export const PrimaryButton = styled(Button)`
     border-radius: 20px;
     cursor: pointer;
     width: 100%;
+    padding: 8px;
     &:hover {
         background-image: linear-gradient(to right, ${secondaryHover}, ${primaryHover});
         border: none;
@@ -30,6 +30,7 @@ export const SecondaryButton = styled(Button)`
     border-radius: 20px;
     cursor: pointer;
     width: 100%;
+    padding: 8px;
     &:hover {
         background-color: ${neutralHover};
         border: 1px solid ${primaryDefault};
