@@ -13,12 +13,23 @@ export const ContainerLogin = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    & img {
+        width: 100px;
+    }
     & > div {
         width: 100%;
     }
-    & > div:first-child {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
+`;
+
+export const DivLogo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+`;
+
+export const DivTextFields = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 `;
