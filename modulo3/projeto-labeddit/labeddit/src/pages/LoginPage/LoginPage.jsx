@@ -17,8 +17,8 @@ export default function Login() {
   }
 
   return (
-    <BodyLogin>
-      <ContainerLogin>
+    <ContainerLogin>
+      <BodyLogin>
         <DivLogo>
           <img src={logo} />
           <h1>LabEddit</h1>
@@ -37,7 +37,7 @@ export default function Login() {
             Crie uma conta!
           </SecondaryButton>
         </div>
-      </ContainerLogin>
-    </BodyLogin>
+      </BodyLogin>
+    </ContainerLogin>
   );
 }

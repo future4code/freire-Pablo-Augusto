@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const BodyLogin = styled.div`
+export const ContainerLogin = styled.div`
     display: flex;
     height: 100vh;
 `;
 
-export const ContainerLogin = styled.div`
+export const BodyLogin = styled.div`
     margin: auto;
     max-width: 600px;
     min-width: 340px;
