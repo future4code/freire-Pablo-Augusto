@@ -1,5 +1,5 @@
 // import { styled } from '@mui/material/styles';
-import { Button, TextField } from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
 import { primaryDefault, secondaryDefault, primaryHover, secondaryHover, neutralHover } from '../constants/colors';
 import styled from 'styled-components';
 
@@ -37,6 +37,25 @@ export const SecondaryButton = styled(Button)`
     }
   }
 `;
+
+export const TertiaryButton = styled(Button)`
+  && {
+    display: ${props => props.showButton ? 'block' : 'none'};
+    color: ${primaryDefault};
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    &:hover {
+        background-color: #e6ddd6;
+    }
+  }
+`
+export const CustomIconButton = styled(IconButton)`
+  && {
+    display: ${props => props.showButton ? 'block' : 'none'};
+  }
+`
 
 export const ActionButton = styled(Button)`
   && {

@@ -2,7 +2,7 @@ import React from "react";
 import { BodyRegistration, ContainerRegistration, DivTextFields, DivTexto } from "./styles";
 import useInput from "../../hooks/useInput";
 import { PrimaryButton } from "../../components/styledButtons";
-import logo from '../../assets/imagem-logo.svg'
+import Header from "../../components/Header/Header";
 
 export default function Registration() {
 
@@ -16,6 +16,7 @@ export default function Registration() {
 
   return (
     <ContainerRegistration>
+      <Header/>
       <BodyRegistration>
         <DivTexto>
         <h1>{'Olá, boas vindas ao LabEddit ;)'}</h1>

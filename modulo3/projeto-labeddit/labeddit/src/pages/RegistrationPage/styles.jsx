@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const ContainerRegistration = styled.div`
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    height: 92vh;
 `;
 
 export const BodyRegistration = styled.div`
