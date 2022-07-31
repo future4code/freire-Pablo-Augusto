@@ -1,4 +1,6 @@
-import { DivAutor, DivConteudo, DivPost, DivTitulo } from "./styles";
+import CommentLabel from "../CommentLabel/CommentLabel";
+import EvaluationLabel from "../EvaluationLabel/EvaluationLabel";
+import { DivAutor, DivConteudo, DivIcones, DivPost, DivTitulo } from "./styles";
 
 export default function CardPost() {
     return <DivPost>
@@ -11,5 +13,9 @@ export default function CardPost() {
         <DivAutor>
             Enviado por: randomStranger69
         </DivAutor>
+        <DivIcones>
+            <EvaluationLabel />
+            <CommentLabel />
+        </DivIcones>
     </DivPost>
 }
