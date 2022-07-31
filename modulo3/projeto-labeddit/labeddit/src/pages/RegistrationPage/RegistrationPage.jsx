@@ -60,7 +60,7 @@ export default function Registration() {
           </p>
         </DivTexto>
         <div>
-          <PrimaryButton variant="outlined" onClick={fazerCadastro}>
+          <PrimaryButton variant="outlined" form='form-cadastro'>
             Cadastrar
           </PrimaryButton>
         </div>
