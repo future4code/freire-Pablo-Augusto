@@ -41,9 +41,11 @@ export const DivTexto = styled.div`
     }
 `;
 
-export const DivTextFields = styled.div`
+export const FormRegistration = styled.form`
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 12px;
-    margin-bottom: 30px;
+    margin-top: 60px;
+    margin-bottom: 10px;
 `;

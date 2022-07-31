@@ -1,21 +1,23 @@
 import React from "react";
 import { Divider, PrimaryButton, SecondaryButton } from "../../components/styledButtons";
-import { BodyLogin, ContainerLogin, DivTextFields, DivLogo } from "./styles";
+import { CustomTextField } from "../../components/styledInputs";
+import { BodyLogin, ContainerLogin, FormLogin, DivLogo } from "./styles";
 import logo from '../../assets/imagem-logo.svg';
-import useInput from "../../hooks/useInput";
+import useForm from "../../hooks/useForm";
 import useCoordinator from "../../hooks/useCoordinator";
 
 export default function Login() {
 
   const { goToRegistration } = useCoordinator();
 
-  const [name, nameInput] = useInput({label: 'Nome', variant: 'outlined', type: 'text'});
-  const [password, passwordInput] = useInput({label: 'Senha', variant: 'outlined', type: 'password'});
+  
+  const [form, onChange, clear] = useForm({email: '', password: ''});
+
 
   const fazerLogin = () => {
     console.log('Logou');
   }
-
+  document.title = "Labeddit - Login"
   return (
     <ContainerLogin>
       <BodyLogin>
@@ -24,12 +26,28 @@ export default function Login() {
           <h1>LabEddit</h1>
           <span>O projeto de rede social da Labenu</span>
         </DivLogo>
-        <DivTextFields>
-          {nameInput}
-          {passwordInput}
-        </DivTextFields>
+        
+        <FormLogin id="form-login" onSubmit={fazerLogin}>
+          <CustomTextField
+            name='email'
+            type='email'
+            value={form.email}
+            onChange={onChange}
+            variant='outlined'
+            label='E-mail'
+          />
+          <CustomTextField
+            name='password'
+            type='password'
+            value={form.password}
+            onChange={onChange}
+            variant='outlined'
+            label='Senha'
+          />
+        </FormLogin>
+        
         <div>
-          <PrimaryButton variant="outlined" onClick={fazerLogin}>
+          <PrimaryButton variant="outlined" form='form-login'>
             Entrar
           </PrimaryButton>
           <Divider />

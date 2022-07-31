@@ -28,8 +28,9 @@ export const DivLogo = styled.div`
     gap: 20px;
 `;
 
-export const DivTextFields = styled.div`
+export const FormLogin = styled.form`
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
 `;
