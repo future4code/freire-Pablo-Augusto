@@ -40,7 +40,7 @@ export const SecondaryButton = styled(Button)`
 
 export const TertiaryButton = styled(Button)`
   && {
-    display: ${props => props.showButton ? 'block' : 'none'};
+    display: ${props => props.showbutton ? 'block' : 'none'};
     color: ${primaryDefault};
     text-transform: capitalize;
     font-weight: bold;
@@ -53,7 +53,7 @@ export const TertiaryButton = styled(Button)`
 `
 export const CustomIconButton = styled(IconButton)`
   && {
-    display: ${props => props.showButton ? 'block' : 'none'};
+    display: ${props => props.showbutton ? 'block' : 'none'};
   }
 `
 

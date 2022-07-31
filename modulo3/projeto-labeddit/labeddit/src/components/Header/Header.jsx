@@ -31,7 +31,7 @@ export default function Header() {
 
     return <HeaderContainer>
         <div>
-            <CustomIconButton size='medium' showButton={showBackButton}>
+            <CustomIconButton size='medium' showbutton={showBackButton}>
                 <CloseIcon fontSize='large' />
             </CustomIconButton>
         </div>
@@ -39,12 +39,12 @@ export default function Header() {
         <div>
             <TertiaryButton 
                 variant="text"
-                showButton={showLogoutButton}
+                showbutton={showLogoutButton}
                 >Logout
             </TertiaryButton>
             <TertiaryButton 
                 variant="text" 
-                showButton={showLoginButton}
+                showbutton={showLoginButton}
                 onClick={goToLogin}
                 >Entrar
             </TertiaryButton>

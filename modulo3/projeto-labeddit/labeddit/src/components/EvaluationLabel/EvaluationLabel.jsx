@@ -4,10 +4,10 @@ import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 
-export default function EvaluationLabel() {
+export default function EvaluationLabel(props) {
     return <DivEval>
         <ThumbUpAltIcon color='success' />
-        <span>1.2K</span>
+        <span>{props.voteSum}</span>
         <ThumbDownAltIcon color='error' />
     </DivEval>
 }
