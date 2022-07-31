@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DivPost = styled.div`
+export const DivComment = styled.div`
     width: 100%;
     background-color: #fbfbfb;
     border: 1px solid #e0e0e0;
@@ -11,14 +11,8 @@ export const DivPost = styled.div`
     gap: 20px;
 `;
 
-export const DivTitulo = styled.div`
-    font-size: 22px;
-    font-weight: bold;
-    color: #181818;
-`;
-
 export const DivConteudo = styled.div`
-    padding-left: 10px;
+    padding: 10px 10px 0 10px;
 `;
 
 export const DivAutor = styled.div`
