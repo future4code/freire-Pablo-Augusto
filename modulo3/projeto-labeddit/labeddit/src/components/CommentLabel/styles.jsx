@@ -8,4 +8,8 @@ export const DivComm = styled.div`
     color: #6f6f6f;
     display: flex;
     gap: 10px;
+    cursor: pointer;
+    &:hover {
+        border-color: #6f6f6f;
+    }
 `;

@@ -22,7 +22,7 @@ export default function Login() {
     Logar(form, clear, navigate);
   }
 
-  document.title = "Labeddit - Login"
+  document.title = "LabEddit - Login"
   return (
     <ContainerLogin>
       <BodyLogin>

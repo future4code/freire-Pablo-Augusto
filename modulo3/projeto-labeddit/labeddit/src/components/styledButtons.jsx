@@ -53,7 +53,8 @@ export const TertiaryButton = styled(Button)`
 `
 export const CustomIconButton = styled(IconButton)`
   && {
-    display: ${props => props.showbutton ? 'block' : 'none'};
+    display: ${props => props.showbutton ? 'flex' : 'none'};
+    align-items: center;
   }
 `
 

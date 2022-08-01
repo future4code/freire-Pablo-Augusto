@@ -1,16 +1,16 @@
 import EvaluationLabel from "../EvaluationLabel/EvaluationLabel";
 import { DivAutor, DivComment, DivConteudo, DivIcones } from "./styles";
 
-export default function CardComment() {
+export default function CardComment(props) {
     return <DivComment>
         <DivConteudo>
-            Comentário com Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum autem nulla voluptates vitae tenetur eos delectus facilis error eveniet exercitationem!
+            {props.content}
         </DivConteudo>
         <DivAutor>
-            Enviado por: usuárioDeDorgas
+            Enviado por: {props.author}
         </DivAutor>
         <DivIcones>
-            <EvaluationLabel/>
+            <EvaluationLabel voteSum={props.voteSum} />
         </DivIcones>
     </DivComment>
 }
