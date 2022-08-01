@@ -12,7 +12,6 @@ export const BodyLogin = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
     & img {
         width: 100px;
     }
@@ -33,4 +32,8 @@ export const FormLogin = styled.form`
     flex-direction: column;
     gap: 12px;
     width: 100%;
+    margin-top: 140px;
+    & > div:last-child {
+        margin-top: 40px;
+    }
 `;

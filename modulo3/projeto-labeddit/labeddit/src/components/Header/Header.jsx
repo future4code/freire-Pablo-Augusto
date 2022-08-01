@@ -2,12 +2,13 @@ import { HeaderContainer } from "./styles";
 import CloseIcon from '@mui/icons-material/Close';
 import logo from '../../assets/imagem-logo.svg';
 import { CustomIconButton, TertiaryButton } from "../styledButtons";
-import { useLocation } from "react-router-dom";
-import useCoordinator from "../../hooks/useCoordinator";
+import { useLocation, useNavigate } from "react-router-dom";
+import { goToLogin, goBack } from '../../routes/Coordinator';
 
 export default function Header() {
 
-    const { goToLogin } = useCoordinator();
+    const navigate = useNavigate();
+
     let location = useLocation();
     let showBackButton = false;
     let showLoginButton = false;
@@ -29,9 +30,15 @@ export default function Header() {
             break;
     }
 
+    const fazerLogout = () => {
+        localStorage.removeItem('token');
+        goToLogin(navigate);
+    }
+
+
     return <HeaderContainer>
         <div>
-            <CustomIconButton size='medium' showbutton={showBackButton}>
+            <CustomIconButton size='medium' showbutton={showBackButton} onClick={() => goBack(navigate)}>
                 <CloseIcon fontSize='large' />
             </CustomIconButton>
         </div>
@@ -40,12 +47,13 @@ export default function Header() {
             <TertiaryButton 
                 variant="text"
                 showbutton={showLogoutButton}
+                onClick={fazerLogout}
                 >Logout
             </TertiaryButton>
             <TertiaryButton 
                 variant="text" 
                 showbutton={showLoginButton}
-                onClick={goToLogin}
+                onClick={() => goToLogin(navigate)}
                 >Entrar
             </TertiaryButton>
         </div>

@@ -1,16 +1,18 @@
 import React from "react";
 import CardPost from "../../components/CardPost/CardPost";
 import Header from "../../components/Header/Header";
-import useCoordinator from "../../hooks/useCoordinator";
 import { useRequestData } from "../../hooks/useRequestData";
 import { BASE_URL } from '../../constants/urls';
+import { useProtectedPage } from "../../hooks/useProtectedPage";
+import { useNavigate } from "react-router-dom";
+import { goToLogin } from "../../routes/Coordinator";
 
 export default function Feed() {
 
-  const { goToLogin } = useCoordinator();
+  useProtectedPage();
+  const navigate = useNavigate();
 
   const [posts, isLoadingPosts] = useRequestData(`${BASE_URL}/posts`);
-  console.log(`${BASE_URL}/posts`)
   const postsExibidos = posts && posts.map((post) => {
     return <CardPost 
               key={post.id}
@@ -27,7 +29,7 @@ export default function Feed() {
       <div>
         <Header />
         Feed
-        <button onClick={goToLogin}>Login</button>
+        <button onClick={() => goToLogin(navigate)}>Login</button>
         <br/>
         <br/>
         <br/>

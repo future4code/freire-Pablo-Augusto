@@ -4,19 +4,24 @@ import { CustomTextField } from "../../components/styledInputs";
 import { BodyLogin, ContainerLogin, FormLogin, DivLogo } from "./styles";
 import logo from '../../assets/imagem-logo.svg';
 import useForm from "../../hooks/useForm";
-import useCoordinator from "../../hooks/useCoordinator";
+import { goToRegistration } from "../../routes/Coordinator";
+import Logar from "../../services/Logar";
+import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-
-  const { goToRegistration } = useCoordinator();
-
+  useUnprotectedPage();
+  
+  const navigate = useNavigate();
   
   const [form, onChange, clear] = useForm({email: '', password: ''});
 
 
-  const fazerLogin = () => {
-    console.log('Logou');
+  const fazerLogin = (event) => {
+    event.preventDefault();
+    Logar(form, clear, navigate);
   }
+
   document.title = "Labeddit - Login"
   return (
     <ContainerLogin>
@@ -27,7 +32,7 @@ export default function Login() {
           <span>O projeto de rede social da Labenu</span>
         </DivLogo>
         
-        <FormLogin id="form-login" onSubmit={fazerLogin}>
+        <FormLogin onSubmit={fazerLogin}>
           <CustomTextField
             name='email'
             type='email'
@@ -44,14 +49,17 @@ export default function Login() {
             variant='outlined'
             label='Senha'
           />
-        </FormLogin>
+        
         
         <div>
-          <PrimaryButton variant="outlined" form='form-login'>
+          <PrimaryButton variant="outlined" type="submit">
             Entrar
           </PrimaryButton>
+        </div>
+        </FormLogin>
+        <div>
           <Divider />
-          <SecondaryButton variant="outlined" onClick={goToRegistration}>
+          <SecondaryButton variant="outlined" onClick={() => goToRegistration(navigate)}>
             Crie uma conta!
           </SecondaryButton>
         </div>

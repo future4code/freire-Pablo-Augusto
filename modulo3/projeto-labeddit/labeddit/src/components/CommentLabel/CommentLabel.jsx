@@ -4,6 +4,6 @@ import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 export default function CommentLabel(props) {
     return <DivComm>
         <ChatOutlinedIcon />
-        <span>{props.commentCount}</span>
+        <span>{props.commentCount ? props.commentCount : '0'}</span>
     </DivComm>
 }

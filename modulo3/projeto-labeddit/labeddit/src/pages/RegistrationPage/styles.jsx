@@ -48,4 +48,14 @@ export const FormRegistration = styled.form`
     gap: 12px;
     margin-top: 60px;
     margin-bottom: 10px;
+    & > div:first-child {
+        margin-bottom: 30px;
+    }
+    & > div {
+        margin-bottom: 10px;
+        & div {
+            margin-bottom: 5px;
+            width: 100%;
+        }
+    }
 `;
