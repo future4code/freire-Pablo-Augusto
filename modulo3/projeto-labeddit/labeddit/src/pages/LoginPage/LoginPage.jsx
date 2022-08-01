@@ -40,6 +40,7 @@ export default function Login() {
             onChange={onChange}
             variant='outlined'
             label='E-mail'
+            required
           />
           <CustomTextField
             name='password'
@@ -48,6 +49,7 @@ export default function Login() {
             onChange={onChange}
             variant='outlined'
             label='Senha'
+            required
           />
         
         

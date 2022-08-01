@@ -5,13 +5,18 @@ import { PrimaryButton } from "../../components/styledButtons";
 import Header from "../../components/Header/Header";
 import useForm from "../../hooks/useForm";
 import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
+import { useNavigate } from "react-router-dom";
+import Cadastrar from "../../services/Cadastrar";
 
 export default function Registration() {
   useUnprotectedPage();
   const [form, onChange, clear] = useForm({username: '', email: '', password: ''})
 
-  const fazerCadastro = () => {
-    console.log('Cadastrou')
+  const navigate = useNavigate();
+
+  const fazerCadastro = (event) => {
+    event.preventDefault();
+    Cadastrar(form, clear, navigate);
   }
 
   return (
@@ -22,15 +27,16 @@ export default function Registration() {
         <h1>{'Olá, boas vindas ao LabEddit ;)'}</h1>
         </DivTexto>
         
-        <FormRegistration id="form-cadastro" onSubmit={fazerCadastro}>
+        <FormRegistration onSubmit={fazerCadastro}>
           <div>
             <CustomTextField
               name='username'
               type='text'
-              value={form.email}
+              value={form.username}
               onChange={onChange}
               variant='outlined'
               label='Nome de usuário'
+              required
             />
             <CustomTextField
               name='email'
@@ -39,6 +45,7 @@ export default function Registration() {
               onChange={onChange}
               variant='outlined'
               label='E-mail'
+              required
             />
             <CustomTextField
               name='password'
@@ -47,6 +54,7 @@ export default function Registration() {
               onChange={onChange}
               variant='outlined'
               label='Senha'
+              required
             />
           </div>
 
@@ -62,7 +70,7 @@ export default function Registration() {
             </p>
           </DivTexto>
           <div>
-            <PrimaryButton variant="outlined" form='form-cadastro'>
+            <PrimaryButton variant="outlined" type="submit">
               Cadastrar
             </PrimaryButton>
           </div>
