@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PostContainer = styled.div`
+export const FeedContainer = styled.div`
     min-width: 360px;
     max-width: 800px;
     padding: 10px 20px;
@@ -10,7 +10,7 @@ export const PostContainer = styled.div`
     gap: 15px;
 `;
 
-export const FormComment = styled.form`
+export const FormPost = styled.form`
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -22,7 +22,7 @@ export const FormComment = styled.form`
     }
 `;
 
-export const DivComments = styled.div`
+export const DivPosts = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
