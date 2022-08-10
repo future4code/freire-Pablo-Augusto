@@ -1,0 +1,1 @@
+export const URL_Base = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/pablo-leao';
