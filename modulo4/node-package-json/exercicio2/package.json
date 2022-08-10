@@ -1,12 +1,12 @@
 {
-    "name": "exercicio2-node",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "start": "node ./index.js"
-    },
-    "keywords": [],
-    "author": "Pablo Leão",
-    "license": "ISC"
+  "name": "exercicio2-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "Pablo Leão",
+  "license": "ISC"
 }
