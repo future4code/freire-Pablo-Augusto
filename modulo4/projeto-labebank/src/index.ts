@@ -7,18 +7,6 @@ app.use(express.json());
 app.use(cors());
 const cyan = '\u001b[36m';
 
-function calculaSaldo(transacoes?: Transacao[]): number {
-    let resultado: number = 0;
-
-    if (transacoes) {
-        for (let transacao of transacoes) {
-            resultado += transacao.valor;
-        }
-    }
-
-    return resultado;
-}
-
 function formataData(data: string): number {
     const arrayDataString = data.split('/');
     const arrayDataNumber = [Number(arrayDataString[2]), Number(arrayDataString[1]) - 1, Number(arrayDataString[0])];
@@ -52,6 +40,10 @@ app.get('/users/:cpf/saldo', (req, res) => {
         switch (error.message) {
             case "O cpf inserido não está cadastrado.":
                 res.status(404).send({ mensagem: error.message });
+                break;
+            default:
+                res.status(500).send("Erro inesperado!");
+                break;
         }
     }
 });
@@ -154,6 +146,38 @@ app.post('/users/:cpf/pagamento', (req, res) => {
         }
     }
 });
+
+app.put('/users/:cpf/saldo', (req, res) => {
+    const cpf = req.params.cpf;
+    const indiceConta = contas.findIndex(conta => conta.cpf === cpf);
+    try {
+        if (indiceConta < 0) {
+            throw new Error("O cpf inserido não está cadastrado.");
+        }
+
+        let saldoAtualizado: number = 0;
+        const dataAtual = Date.now();
+        if (contas[indiceConta].extrato) {
+            for (let transacao of contas[indiceConta].extrato) {
+                if (transacao.data < dataAtual) {
+                    saldoAtualizado += transacao.valor;
+                }
+            }
+        }
+        contas[indiceConta].saldo = saldoAtualizado;
+        res.status(200).send("Saldo atualizado com sucesso.");
+
+    } catch (error: any) {
+        switch (error.message) {
+            case "O cpf inserido não está cadastrado.":
+                res.status(404).send({ mensagem: error.message });
+                break;
+            default:
+                res.status(500).send("Erro inesperado!");
+                break;
+        }
+    }
+})
 
 app.put('/users/:cpf/deposito', (req, res) => {
     const cpf = req.params.cpf;
