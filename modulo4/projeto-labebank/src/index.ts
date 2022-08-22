@@ -110,11 +110,16 @@ app.post('/users/:cpf/pagamento', (req, res) => {
             throw new Error("A propriedade valor deve ser maior que 0.")
         }
 
+        const dataAtual = Date.now();
         let dataFormatada: number;
-        if (!dataVencimento) {
-            dataFormatada = Date.now();
-        } else {
+        if (dataVencimento) {
             dataFormatada = formataData(dataVencimento);
+        } else {
+            dataFormatada = Date.now();  
+        }
+        
+        if (dataFormatada < dataAtual) {
+            throw new Error("A data de vencimento já passou. A conta não pode estar vencida.");
         }
 
         const transacao: Transacao = {
@@ -135,6 +140,9 @@ app.post('/users/:cpf/pagamento', (req, res) => {
                 res.status(422).send({ mensagem: error.message });
                 break;
             case "A propriedade valor deve ser maior que 0.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            case "A data de vencimento já passou. A conta não pode estar vencida.":
                 res.status(422).send({ mensagem: error.message });
                 break;
             case "Não existe um cliente cadastrado com esse CPF.":
