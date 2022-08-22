@@ -110,6 +110,10 @@ app.post('/users/:cpf/pagamento', (req, res) => {
             throw new Error("A propriedade valor deve ser maior que 0.")
         }
 
+        if (valor > contas[indiceConta].saldo) {
+            throw new Error("Saldo insuficiente para fazer o pagamento.")
+        }
+
         const dataAtual = Date.now();
         let dataFormatada: number;
         if (dataVencimento) {
@@ -143,6 +147,9 @@ app.post('/users/:cpf/pagamento', (req, res) => {
                 res.status(422).send({ mensagem: error.message });
                 break;
             case "A data de vencimento já passou. A conta não pode estar vencida.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            case "Saldo insuficiente para fazer o pagamento.":
                 res.status(422).send({ mensagem: error.message });
                 break;
             case "Não existe um cliente cadastrado com esse CPF.":
