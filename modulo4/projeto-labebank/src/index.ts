@@ -29,18 +29,37 @@ function formataData(data: string): number {
 function calculaIdade(dataNascimento: number): number {
     const dataAtual = Date.now();
     const idadeMS = dataAtual - dataNascimento;
-    const idade = Math.floor(((((idadeMS/1000)/60)/60)/24)/365.25);
+    const idade = Math.floor(((((idadeMS / 1000) / 60) / 60) / 24) / 365.25);
     return idade;
 }
 
 app.get('/users', (req, res) => {
-    res.status(200).send(contas)
-})
+    res.status(200).send(contas);
+});
+
+app.get('/users/:cpf/saldo', (req, res) => {
+    const cpf = req.params.cpf;
+    const conta = contas.find(conta => conta.cpf === cpf);
+
+    try {
+        if (!conta) {
+            throw new Error("O cpf inserido não está cadastrado.");
+        }
+
+        res.status(200).send({ saldo: conta.saldo });
+
+    } catch (error: any) {
+        switch (error.message) {
+            case "O cpf inserido não está cadastrado.":
+                res.status(404).send({ mensagem: error.message });
+        }
+    }
+});
 
 app.post('/users', (req, res) => {
     const { nome, cpf, dataNascimento } = req.body;
     const idade = calculaIdade(formataData(dataNascimento));
-    const cpfJaCadastrado = contas.find(conta => conta.cpf === cpf)
+    const cpfJaCadastrado = contas.find(conta => conta.cpf === cpf);
 
     try {
         if (idade < 18) {
@@ -55,22 +74,22 @@ app.post('/users', (req, res) => {
             cpf: cpf,
             dataNascimento: dataNascimento,
             idade: idade,
-            extrato : [],
+            extrato: [],
             saldo: 0
         }
         contas.push(novaConta);
         res.status(201).send(contas);
 
-    } catch(error: any) {
+    } catch (error: any) {
         switch (error.message) {
             case "Só são aceitas idades maiores ou iguais a 18.":
-                res.status(422).send({mensagem: error.message});
+                res.status(422).send({ mensagem: error.message });
                 break;
             case "O cpf inserido já foi cadastrado.":
-                res.status(409).send({mensagem: error.message});
+                res.status(409).send({ mensagem: error.message });
                 break;
             default:
-                res.status(500).send({mensagem: "Erro inesperado!"});
+                res.status(500).send({ mensagem: "Erro inesperado!" });
                 break;
         }
     }
@@ -78,5 +97,5 @@ app.post('/users', (req, res) => {
 });
 
 app.listen(3003, () => {
-    console.log(cyan+"Server running at http://localhost:3003");
+    console.log(cyan + "Server running at http://localhost:3003");
 });
