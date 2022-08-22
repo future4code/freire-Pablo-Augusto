@@ -176,7 +176,7 @@ app.post('/users/:cpf/transferencia', (req, res) => {
             throw new Error("Não existe um cliente cadastrado com esse CPF e nome. Verifique o cliente emissor.");
         }
 
-        const indiceContaDestinatario = contas.findIndex(conta => conta.cpf === cpf && conta.nome.toLowerCase() === nome.toLowerCase());
+        const indiceContaDestinatario = contas.findIndex(conta => conta.cpf === cpfDestinatario && conta.nome.toLowerCase() === nomeDestinatario.toLowerCase());
         if (indiceContaDestinatario < 0) {
             throw new Error("Não existe um cliente cadastrado com esse CPF e nome. Verifique o cliente destinatário.");
         }
@@ -205,6 +205,7 @@ app.post('/users/:cpf/transferencia', (req, res) => {
         }
         contas[indiceConta].extrato.push(transferenciaEmissor);
         contas[indiceContaDestinatario].extrato.push(transferenciaDestinatario);
+        res.status(200).send("Transferência realizada com sucesso");
 
     } catch (error: any) {
         switch (error.message) {
