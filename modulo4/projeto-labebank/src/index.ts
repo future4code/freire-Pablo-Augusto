@@ -40,12 +40,16 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
     const { nome, cpf, dataNascimento } = req.body;
     const idade = calculaIdade(formataData(dataNascimento));
+    const cpfJaCadastrado = contas.find(conta => conta.cpf === cpf)
 
     try {
         if (idade < 18) {
             throw new Error("Só são aceitas idades maiores ou iguais a 18.");
         }
-        
+        if (cpfJaCadastrado) {
+            throw new Error("O cpf inserido já foi cadastrado.");
+        }
+
         const novaConta: Conta = {
             nome: nome,
             cpf: cpf,
@@ -61,6 +65,9 @@ app.post('/users', (req, res) => {
         switch (error.message) {
             case "Só são aceitas idades maiores ou iguais a 18.":
                 res.status(422).send({mensagem: error.message});
+                break;
+            case "O cpf inserido já foi cadastrado.":
+                res.status(409).send({mensagem: error.message});
                 break;
             default:
                 res.status(500).send({mensagem: "Erro inesperado!"});
