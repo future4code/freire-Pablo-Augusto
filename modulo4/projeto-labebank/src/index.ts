@@ -96,6 +96,51 @@ app.post('/users', (req, res) => {
 
 });
 
+app.put('/users/:cpf/deposito', (req, res) => {
+    const cpf = req.params.cpf;
+    const { nome, valor } = req.body;
+
+    try {
+        if (!cpf || !nome || !valor) {
+            throw new Error("Algum valor não foi preenchido. Verifique os dados de cpf, nome ou valor.");
+        }
+
+        if (isNaN(valor)) {
+            throw new Error("A propriedade valor deve ser do tipo number.");
+        }
+
+        const indiceConta = contas.findIndex(conta => conta.cpf === cpf && conta.nome.toLowerCase() === nome.toLowerCase());
+        if (indiceConta < 0) {
+            throw new Error("Não existe um cliente cadastrado com esse CPF e nome.");
+        }
+
+        const deposito: Transacao = {
+            valor: valor,
+            data: Date.now(),
+            descricao: "Depósito de dinheiro"
+        }
+        contas[indiceConta].extrato.push(deposito);
+        res.status(200).send("Depósito realizado com sucesso.");
+
+    } catch (error: any) {
+        switch (error.message) {
+            case "Algum valor não foi preenchido. Verifique os dados de cpf, nome ou valor.":
+                res.status(400).send({ mensagem: error.message });
+                break;
+            case "A propriedade valor deve ser do tipo number.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            case "Não existe um cliente cadastrado com esse CPF e nome":
+                res.status(404).send({ mensagem: error.message });
+                break;
+            default:
+                res.status(500).send("Erro inesperado!");
+                break;
+        }
+    }
+
+});
+
 app.listen(3003, () => {
     console.log(cyan + "Server running at http://localhost:3003");
 });
