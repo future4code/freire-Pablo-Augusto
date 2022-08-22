@@ -162,6 +162,77 @@ app.post('/users/:cpf/pagamento', (req, res) => {
     }
 });
 
+app.post('/users/:cpf/transferencia', (req, res) => {
+    const cpf = req.params.cpf;
+    const { nome, nomeDestinatario, cpfDestinatario, valor } = req.body;
+    
+    try {
+        if(!cpf || !nome || !nomeDestinatario || !cpfDestinatario || !valor) {
+            throw new Error("Algum valor não foi preenchido. Verifique os dados de cpf, nome, nomeDestinatario, cpfDestinatario ou valor.");
+        }
+        
+        const indiceConta = contas.findIndex(conta => conta.cpf === cpf && conta.nome.toLowerCase() === nome.toLowerCase());
+        if (indiceConta < 0) {
+            throw new Error("Não existe um cliente cadastrado com esse CPF e nome. Verifique o cliente emissor.");
+        }
+
+        const indiceContaDestinatario = contas.findIndex(conta => conta.cpf === cpf && conta.nome.toLowerCase() === nome.toLowerCase());
+        if (indiceContaDestinatario < 0) {
+            throw new Error("Não existe um cliente cadastrado com esse CPF e nome. Verifique o cliente destinatário.");
+        }
+
+        if (isNaN(valor)) {
+            throw new Error("A propriedade valor deve ser do tipo number.");
+        }
+
+        if (valor <= 0) {
+            throw new Error("A propriedade valor deve ser maior que 0.");
+        }
+
+        if (valor > contas[indiceConta].saldo) {
+            throw new Error("Saldo insuficiente para fazer a transferência.");
+        }
+
+        const transferenciaEmissor: Transacao = {
+            data: Date.now(),
+            valor: (-1) * valor,
+            descricao: `Valor transfeirdo para ${contas[indiceContaDestinatario].nome}`
+        }
+        const transferenciaDestinatario: Transacao = {
+            data: Date.now(),
+            valor: valor,
+            descricao: `Valor recebido de ${contas[indiceConta].nome}`
+        }
+        contas[indiceConta].extrato.push(transferenciaEmissor);
+        contas[indiceContaDestinatario].extrato.push(transferenciaDestinatario);
+
+    } catch (error: any) {
+        switch (error.message) {
+            case "Algum valor não foi preenchido. Verifique os dados de cpf, nome, nomeDestinatario, cpfDestinatario ou valor.":
+                res.status(400).send({ mensagem: error.message });
+                break;
+            case "Não existe um cliente cadastrado com esse CPF e nome. Verifique o cliente emissor.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            case "Não existe um cliente cadastrado com esse CPF e nome. Verifique o cliente destinatário.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            case "A propriedade valor deve ser do tipo number.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            case "A propriedade valor deve ser maior que 0.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            case "Saldo insuficiente para fazer a transferência.":
+                res.status(422).send({ mensagem: error.message });
+                break;
+            default:
+                res.status(500).send("Erro inesperado!");
+                break;
+        }
+    }
+})
+
 app.put('/users/:cpf/saldo', (req, res) => {
     const cpf = req.params.cpf;
     const indiceConta = contas.findIndex(conta => conta.cpf === cpf);
