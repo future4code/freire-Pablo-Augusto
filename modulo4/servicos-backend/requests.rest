@@ -1,8 +1,8 @@
-POST http://localhost:3003/user
+POST https://servicos-backend-pablo.herokuapp.com/user
 Content-Type: application/json
 
 {
-    "cep": "21331660", 
-    "numero": "155", 
-    "complemento": "Bloco 3 AP 302"
+    "cep": "21030001", 
+    "numero": "9020", 
+    "complemento": "CIAGA"
 }
