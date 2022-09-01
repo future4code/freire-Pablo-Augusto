@@ -1,0 +1,8 @@
+POST https://servicos-backend-pablo.herokuapp.com/user
+Content-Type: application/json
+
+{
+    "cep": "21030001", 
+    "numero": "9020", 
+    "complemento": "CIAGA"
+}
