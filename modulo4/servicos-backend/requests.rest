@@ -1,0 +1,8 @@
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "cep": "21331660", 
+    "numero": "155", 
+    "complemento": "Bloco 3 AP 302"
+}
